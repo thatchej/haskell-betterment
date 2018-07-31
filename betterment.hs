@@ -5,7 +5,7 @@ import Data.Char
 import Data.List
 
 main :: IO ()
-main = putStrLn (show (largestNumber' [1, 12, 15, 12, 1, 4]))
+main = putStrLn (show (largestNumber [1, 12, 15, 12, 1, 4]))
 
 -- returns a string with only duplicate chars from original string
 dupChars :: String -> String
@@ -37,8 +37,8 @@ largestNumber (x:xs)
     | x > largestNumber xs = x
     | otherwise            = largestNumber xs
 
--- largestNumber' :: [Integer] -> Integer
--- largestNumber' x = foldr1 (\x y -> if x >= y then x else y) 
+largestNumber' :: [Integer] -> Integer
+largestNumber' = foldr1 (\x y -> if x >= y then x else y) 
 
 -- HELPER FUNCTIONS
 --
