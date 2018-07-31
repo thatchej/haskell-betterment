@@ -16,7 +16,7 @@ data Piece     = Piece {
 nextMovesForPiece :: Piece -> [Position]
 nextMovesForPiece x =
     case pieceType x of
-      King   -> [(curX,curY)]
+      King   -> [(x,y) | x <- [(curX-1)..(curX+1)], y <- [(curY-1)..(curY+1)]]
       Queen  -> [(curX,curY)]
       Rook   -> [(3,3)]
       Bishop -> [(4,4)]
@@ -27,7 +27,7 @@ nextMovesForPiece x =
         curY = snd(position x)
 
 main :: IO ()
-main = putStrLn (show (nextMovesForPiece (Piece (0,0) "White" Queen) ))
+main = putStrLn (show (nextMovesForPiece (Piece (0,0) "White" King) ))
 
 -- COMMON INTERVIEW QUESTION ANSWERS
 --
