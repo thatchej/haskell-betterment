@@ -5,7 +5,7 @@ import Data.Char
 import Data.List
 
 main :: IO ()
-main = putStrLn (show (largestNumber [1, 12, 15, 12, 1, 4]))
+main = putStrLn (show (nextMovesForPiece (Piece (0,0) "White" Queen) ))
 
 -- returns a string with only duplicate chars from original string
 dupChars :: String -> String
@@ -63,3 +63,40 @@ jarReverse x  = last x : jarReverse (init x)
 -- returns a lowercase version of String arg w/ no spaces
 cleanString :: String -> String
 cleanString x = filter (/=' ') (map toLower x)
+
+-- Naive Chess Board experiment
+data PieceType = Pawn | Knight | Bishop | Rook | Queen | King
+type Position  = (Int,Int)
+data Piece     = Piece {
+    position  :: Position,
+    color     :: String,
+    pieceType :: PieceType
+}
+
+-- get all possible next moves for a given chess piece
+nextMovesForPiece :: Piece -> [Position]
+nextMovesForPiece x =
+    case pieceType x of
+      King   -> [(1,1)]
+      Queen  -> [(2,2)]
+      -- Rook   -> [3,3]
+      -- Bishop -> [4,4]
+      -- Knight -> [5,5]
+      -- Pawn   -> [6,6]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
